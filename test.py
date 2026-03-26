@@ -48,8 +48,9 @@ def kuldi1():
             if q10 == "2":
                 print("Kivártad az óra végét.")
                 print(f"Az eredményeid:\n    {ertekeles[0]}")
-#ecb
+
         if q2 == "2":
+
             time.sleep(0.7)
             print("Erika a szertárban található sósavval kimarja a falat és beír egy szaktanárit.")
             ertekeles.append("Szaktanári")
