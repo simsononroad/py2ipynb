@@ -1,4 +1,5 @@
-
+from jinja2 import Environment, FileSystemLoader
+import json
 
 
 
@@ -22,6 +23,7 @@ class Convert:
             start_block_index = []
             end_block_index = []
             
+            
             for sor_index in range(len(sorok)):
                 
                 if self.start_code_block in sorok[sor_index]:
@@ -34,8 +36,34 @@ class Convert:
 
             for start, end in block_length_index_dict.items():
                 block_length_index_list.append([start, end])
-            print(block_length_index_list)
-            print(block_length_index_dict)
+            
+            env = Environment(loader=FileSystemLoader("blocks/"))
+            base_template = env.get_template("base.json.jinja")
+            
+
+            code_blocks = []
+
+            print(len(block_length_index_list))
+            with open("blocks/code.json.jinja", "r") as f:
+                
+                for i in range(len(block_length_index_list)):
+                    code_blocks.append(json.dumps(sorok[block_length_index_list[i][0]:block_length_index_list[i][1]]))
+                
+                code_block = f.read()
+                code_template = env.get_template("code.json.jinja")
+                content1 = code_template.render(blocks = code_blocks)
+                
+                with open(self.output_file, "w") as f:
+                    content2 = base_template.render(blocks=content1)
+                    
+                    f.write(content2)
+                    
+            
+
+            
+            
+            
+            
             
                 
 
@@ -44,5 +72,5 @@ class Convert:
                 
 
 
-a = Convert("test.py", "test.ipynb")
+a = Convert(input_file="test.py", output_file="test.ipynb")
 a.py2ipynb()

@@ -16,7 +16,6 @@ A főhősök a diákok akiket a híres neves fortnine player Erika néni tart re
         pass
 #ecb
 
-
 #scb
 def kuldi1():
     print("\n\n\n")
@@ -24,6 +23,7 @@ def kuldi1():
     time.sleep(3)
     print("Erika kéri hogy a diákok alljanak föl.")
     time.sleep(0.8)
+
     q1 = input("Mit teszel?\n    Felállsz(1)\n    maradsz ülve(2)\n>>>")
     if q1 == "1":
         print("minden megy tovább... A hetes jelent.\n")
@@ -107,7 +107,7 @@ def kuldi1():
                 print("az óra eltelt kibírtad...")
                 time.sleep(0.7)
                 print(f"Az eredményeid:\n    {ertekeles[0]}\n    {ertekeles[1]}")
-
+#ecb
 
 if __name__ == "__main__":
     main()

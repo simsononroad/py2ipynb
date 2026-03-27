@@ -1,8 +1,10 @@
+{% for block in blocks %} 
   {
    "cell_type": "code",
    "execution_count": null,
    "id": "2620899e",
    "metadata": {},
    "outputs": [],
-   "source": []
-  }
+   "source": {{ block }}
+  },
+{% endfor %}
